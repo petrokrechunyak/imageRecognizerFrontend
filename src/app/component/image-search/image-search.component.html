@@ -1,0 +1,25 @@
+<div class="container">
+  <h1>Home assignment for Software Developer</h1>
+
+  <form class="form" [formGroup]="uploadForm" (ngSubmit)="onUpload()" (change)="onChange($event)">
+    <div class="input-group">
+      <label for="image-upload">Upload an image:</label>
+      <input type="file" formControlName="image" id="image-upload" accept="image/*">
+    </div>
+    <button type="submit" id="upload-btn" [disabled]="uploadForm.invalid">Upload</button>
+  </form>
+
+  <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+    <div class="input-group">
+      <label for="image-search">Search for tags:</label>
+      <input type="text" formControlName="keyword" id="image-search" placeholder="Enter keywords...">
+    </div>
+    <button type="submit" id="search-btn" [disabled]="searchForm.invalid">Search</button>
+  </form>
+
+  <div class="image-container">
+    <div *ngFor="let result of searchResults">
+      <img [src]="result" alt="Image">
+    </div>
+  </div>
+</div>
